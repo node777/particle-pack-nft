@@ -42,14 +42,14 @@ contract LightlingNFT is ERC721SeaDropUpgradeable  {
     
     using LightlingTokenStorage for LightlingTokenStorage.Layout;
     
-    // Addresses
-    address seadrop = 0x00005EA00Ac477B1030CE78506496e8C2dE24bf5;
-
-    // Token config
-    string tokenName = "Genesis pARticle pack";
-    string tokenSymbol = "LIGHTLING";
-    
     function init() external initializer initializerERC721A {
+        // Addresses
+        address seadrop = 0x00005EA00Ac477B1030CE78506496e8C2dE24bf5;
+
+        // Token config
+        string memory tokenName = "Genesis pARticle pack";
+        string memory tokenSymbol = "LIGHTLING";
+        
         address[] memory allowedSeadrop = new address[](1);
         allowedSeadrop[0] = seadrop;
         ERC721SeaDropUpgradeable.__ERC721SeaDrop_init(
@@ -57,10 +57,6 @@ contract LightlingNFT is ERC721SeaDropUpgradeable  {
             tokenSymbol,
             allowedSeadrop
         );
-    }
-
-     function reserveMint(address to, uint256 quantity) public onlyOwner {
-        _safeMint(to, quantity);
     }
 
     /**
